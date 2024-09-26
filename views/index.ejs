@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Search</title>
+  </head>
+  <body>
+    <h1>Search for a Movie</h1>
+
+    <form action="/search" method="POST">
+      <input
+        type="text"
+        name="movieName"
+        placeholder="Enter movie name"
+        required
+      />
+      <button type="submit">Search</button>
+    </form>
+
+    <% if (error) { %>
+    <p style="color: red"><%= error %></p>
+    <% } %> <% if (movie) { %>
+    <h2>Movie Details</h2>
+    <p><strong>Title:</strong> <%= movie.Title %></p>
+    <p><strong>Year:</strong> <%= movie.Year %></p>
+    <p><strong>Rated:</strong> <%= movie.Rated %></p>
+    <p><strong>Released:</strong> <%= movie.Released %></p>
+    <p><strong>Runtime:</strong> <%= movie.Runtime %></p>
+    <p><strong>Genre:</strong> <%= movie.Genre %></p>
+    <p><strong>Director:</strong> <%= movie.Director %></p>
+    <p><strong>Writer:</strong> <%= movie.Writer %></p>
+    <p><strong>Actors:</strong> <%= movie.Actors %></p>
+    <p><strong>Plot:</strong> <%= movie.Plot %></p>
+    <p><strong>Language:</strong> <%= movie.Language %></p>
+    <p><strong>Country:</strong> <%= movie.Country %></p>
+    <p><strong>Awards:</strong> <%= movie.Awards %></p>
+    <p><strong>Poster:</strong></p>
+    <img src="<%= movie.Poster %>" alt="Movie Poster" style="width: 200px" />
+    <p><strong>Metascore:</strong> <%= movie.Metascore %></p>
+    <p><strong>IMDB Rating:</strong> <%= movie.imdbRating %></p>
+    <p><strong>IMDB Votes:</strong> <%= movie.imdbVotes %></p>
+    <p><strong>Box Office:</strong> <%= movie.BoxOffice %></p>
+    <p><strong>Production:</strong> <%= movie.Production %></p>
+    <p>
+      <strong>Website:</strong>
+      <a href="<%= movie.Website %>"><%= movie.Website %></a>
+    </p>
+
+    <h3>Ratings</h3>
+    <ul>
+      <% movie.Ratings.forEach(function(rating) { %>
+      <li><strong><%= rating.Source %>:</strong> <%= rating.Value %></li>
+      <% }); %>
+    </ul>
+    <% } %>
+  </body>
+</html>
